@@ -10,7 +10,8 @@ resource "helm_release" "postgresql" {
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql"
   version    = "15.5.2"
-
+  wait       = false
+  
   set = [
     {
       name  = "postgresqlUsername"
@@ -29,5 +30,6 @@ resource "helm_release" "postgresql" {
       value = "LoadBalancer"
     }
   ]
+  
   depends_on = [module.eks]
 }
