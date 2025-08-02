@@ -3,5 +3,5 @@ variable "k8s_version" {
 }
 
 variable "eks_cluster_name" {
-  default = "coworking-space-project-cluster"
+  default = "coworking-space-project"
 }
