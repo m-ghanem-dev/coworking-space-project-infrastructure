@@ -1,6 +1,9 @@
 name: Coworking Space Project Infrastructure
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
