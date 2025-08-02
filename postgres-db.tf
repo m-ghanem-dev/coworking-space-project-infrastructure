@@ -12,25 +12,25 @@ resource "helm_release" "postgresql" {
   version    = "15.5.2"
   wait       = false
 
-  set {
-    name  = "auth.username"
-    value = "myuser"
-  }
-
-  set {
-    name  = "auth.password"
-    value = "mypassword"
-  }
-
-  set {
-    name  = "auth.database"
-    value = "mydatabase"
-  }
-
-  set {
-    name  = "service.type"
-    value = "LoadBalancer"
-  }
+  # https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
+  set = [
+    {
+      name  = "auth.username"
+      value = "myuser"
+    },
+    {
+      name  = "auth.password"
+      value = "mypassword"
+    },
+    {
+      name  = "auth.database"
+      value = "mydatabase"
+    },
+    {
+      name  = "primary.service.type"
+      value = "LoadBalancer"
+    }
+  ]
 
   depends_on = [module.eks]
 }
