@@ -15,6 +15,10 @@ resource "helm_release" "postgresql" {
   # https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
   set = [
     {
+        name  = "primary.persistence.storageClass"
+        value = "gp2"
+    },
+    {
       name  = "auth.username"
       value = "myuser"
     },
