@@ -29,4 +29,5 @@ resource "helm_release" "postgresql" {
       value = "LoadBalancer"
     }
   ]
+  depends_on = [module.eks]
 }
