@@ -9,7 +9,7 @@ resource "helm_release" "postgresql" {
   namespace  = "default"
   repository = "https://charts.bitnami.com/bitnami"
   chart      = "postgresql"
-  version    = "15.5.2"
+  version    = "16.3.0"
   wait       = false
 
   # https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml
