@@ -11,23 +11,22 @@ resource "helm_release" "postgresql" {
   chart      = "postgresql"
   version    = "15.5.2"
 
-  set {
-    name  = "postgresqlUsername"
-    value = "myuser"
-  }
-
-  set {
-    name  = "postgresqlPassword"
-    value = "mypassword"
-  }
-
-  set {
-    name  = "postgresqlDatabase"
-    value = "mydatabase"
-  }
-
-  set {
-    name  = "service.type"
-    value = "LoadBalancer"
-  }
+  set = [
+    {
+      name  = "postgresqlUsername"
+      value = "myuser"
+    },
+    {
+      name  = "postgresqlPassword"
+      value = "mypassword"
+    },
+    {
+      name  = "postgresqlDatabase"
+      value = "mydatabase"
+    },
+    {
+      name  = "service.type"
+      value = "LoadBalancer"
+    }
+  ]
 }
