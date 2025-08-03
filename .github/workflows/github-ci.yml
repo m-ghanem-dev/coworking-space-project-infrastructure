@@ -62,14 +62,5 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      # Apply only the EKS cluster first
-      - name: Apply EKS cluster
-        run: terraform apply -auto-approve -target=module.eks
-
-      # Update kubeconfig so Terraform Helm provider can connect
-      - name: Update kubeconfig for EKS
-        run: aws eks update-kubeconfig --name coworking-space-project --region eu-central-1
-
-      # Now apply all remaining resources including Helm releases
-      - name: Terraform Apply Remaining Resources
+      - name: Terraform Apply
         run: terraform apply -auto-approve
