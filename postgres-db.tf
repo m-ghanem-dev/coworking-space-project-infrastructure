@@ -53,7 +53,7 @@ resource "helm_release" "postgresql" {
 
 # Create the EBS volume in AWS
 resource "aws_ebs_volume" "postgres_volume" {
-  availability_zone = "eu-central-1"  # must match your EKS node AZ
+  availability_zone = "eu-central-1a"  # must match your EKS node AZ
   size              = 20              # in GB
   type              = "gp2"
   tags = {
