@@ -75,7 +75,7 @@ resource "kubernetes_persistent_volume" "postgres_pv" {
     access_modes = ["ReadWriteOnce"]
 
     persistent_volume_source {
-      aws_ebs {
+      aws_elastic_block_store {
         volume_id = aws_ebs_volume.postgres_volume.id
         fs_type   = "ext4"
       }
