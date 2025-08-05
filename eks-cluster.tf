@@ -47,7 +47,8 @@ resource "aws_iam_policy_attachment" "cwagent_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
 }
 
-resource "aws_eks_addon" "example" {
+# install the Amazon CloudWatch Observability EKS add-on
+resource "aws_eks_addon" "cw_observability_addon" {
   addon_name   = "amazon-cloudwatch-observability"
   cluster_name = var.eks_cluster_name
 }
