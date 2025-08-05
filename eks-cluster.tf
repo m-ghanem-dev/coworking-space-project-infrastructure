@@ -33,3 +33,13 @@ resource "aws_security_group_rule" "allow_ports" {
   description       = "Allow TCP traffic from anywhere to port 30008 (backend node port)"
 }
 
+# This grants the worker nodes the necessary IAM permissions 
+# to send metrics and logs to CloudWatch using the CloudWatch Agent running on them.
+resource "aws_iam_policy_attachment" "cwagent_policy_attachment" {
+  name       = "cwagent-policy-attach"
+  # https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/20.37.2/submodules/eks-managed-node-group?tab=outputs
+  roles      = [module.eks.eks_managed_node_groups["default"].iam_role_name]
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
+
