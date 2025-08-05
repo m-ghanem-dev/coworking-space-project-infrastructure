@@ -33,6 +33,11 @@ resource "aws_security_group_rule" "allow_ports" {
   description       = "Allow TCP traffic from anywhere to port 30008 (backend node port)"
 }
 
+
+# Cloudwatch container insights
+
+# https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Observability-EKS-addon.html
+
 # This grants the worker nodes the necessary IAM permissions 
 # to send metrics and logs to CloudWatch using the CloudWatch Agent running on them.
 resource "aws_iam_policy_attachment" "cwagent_policy_attachment" {
@@ -42,4 +47,8 @@ resource "aws_iam_policy_attachment" "cwagent_policy_attachment" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
 }
 
+resource "aws_eks_addon" "example" {
+  addon_name   = "amazon-cloudwatch-observability"
+  cluster_name = var.eks_cluster_name
+}
 
