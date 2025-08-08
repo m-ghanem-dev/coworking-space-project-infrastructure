@@ -1,4 +1,4 @@
-name: Coworking Space Project Infrastructure
+name: Terraform Destroy
 
 on:
   workflow_dispatch:
